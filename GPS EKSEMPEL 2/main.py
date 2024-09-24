@@ -53,7 +53,7 @@ while True:
         
         lat_lon = get_lat_lon()           # multiple returns in tuple format
         print(lat_lon)
-        if lat and lon:
+        if lat_lon:
                                           # store telemetry in dictionary      
             telemetry = {'latitude': lat_on[0], 'longitude': lat_on[1]}
             client.send_telemetry(telemetry) #Sending telemetry  
