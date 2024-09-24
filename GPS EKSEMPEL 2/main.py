@@ -17,20 +17,15 @@
 
 from uthingsboard.client import TBDeviceMqttClient
 from time import sleep
-from machine import reset
+from machine import reset, UART
 import gc
 import secrets
-from machine import UART
 from gps_bare_minimum import GPS_SIMPLE
-#########################################################################
-# CONFIGURATION
+
 gps_port = 2                               # ESP32 UART port, Educaboard ESP32 default UART port
 gps_speed = 9600                           # UART speed, defauls u-blox speed
-#########################################################################
-# OBJECTS
 uart = UART(gps_port, gps_speed)           # UART object creation
-gps = GPS_SIMPLE(uart)                     # GPS object creation
-#########################################################################     
+gps = GPS_SIMPLE(uart)                     # GPS object creation  
 def get_lat_lon():
     lat = lon = None                       # create lat and lon variable with None as default value
     if gps.receive_nmea_data():            # check if data is recieved
