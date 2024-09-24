@@ -55,7 +55,7 @@ while True:
         print(lat_lon)
         if lat_lon:
                                           # store telemetry in dictionary      
-            telemetry = {'latitude': lat_on[0], 'longitude': lat_on[1]}
+            telemetry = {'latitude': lat_lon[0], 'longitude': lat_lon[1]}
             client.send_telemetry(telemetry) #Sending telemetry  
         sleep(1)                          # send telemetry once every second
     except KeyboardInterrupt:
