@@ -1,6 +1,6 @@
 # GPS program
 from machine import UART
-from gps_bare_minimum import GPS_SIMPLE
+from gps_simple import GPS_SIMPLE
 import _thread
 import time
 

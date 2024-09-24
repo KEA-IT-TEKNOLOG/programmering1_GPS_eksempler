@@ -20,7 +20,7 @@ from time import sleep
 from machine import reset, UART
 import gc
 import secrets
-from gps_bare_minimum import GPS_SIMPLE
+from gps_simple import GPS_SIMPLE
 
 gps_port = 2                               # ESP32 UART port, Educaboard ESP32 default UART port
 gps_speed = 9600                           # UART speed, defauls u-blox speed
