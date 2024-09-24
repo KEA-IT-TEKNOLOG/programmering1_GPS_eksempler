@@ -50,27 +50,22 @@ client.connect()                           # Connecting to ThingsBoard
 print("connected to thingsboard, starting to send and receive data")
 while True:
     try:
-        print(f"free memory: {gc.mem_free()}")
+        print(f"free memory: {gc.mem_free()}") # monitor memory left
         
-        if gc.mem_free() < 2000:          # monitor and free memory left
+        if gc.mem_free() < 2000:          # free memory if below 2000 bytes left
             print("Garbage collected!")
-            gc.collect()
+            gc.collect()                  # free memory 
         
-        lat_lon = get_lat_lon()
+        lat_lon = get_lat_lon()           # multiple returns in tuple format
         print(lat_lon)
-        if lat_lon:
-                                          # Sending telemetry        
-            telemetry = {'latitude': lat_lon[0], 'longitude': lat_lon[1]}
-            client.send_telemetry(telemetry)
-        
-                                          # Checking for incoming subscriptions or RPC call requests (non-blocking)
-        client.check_msg()
-        print(".",end="")
-        sleep(1)
+        if lat and lon:
+                                          # store telemetry in dictionary      
+            telemetry = {'latitude': lat_on[0], 'longitude': lat_on[1]}
+            client.send_telemetry(telemetry) #Sending telemetry  
+        sleep(1)                          # send telemetry once every second
     except KeyboardInterrupt:
         print("Disconnected!")
         client.disconnect()               # Disconnecting from ThingsBoard
-        reset()
-        
-        
+        reset()                           # reset ESP32
 
+        
